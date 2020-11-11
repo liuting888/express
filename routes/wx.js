@@ -4,13 +4,15 @@ var query = require("./../public/javascripts/mysql.js");
 
 //查询
 router.post('/query', function (req, res) {
+    // res.set('Content-Type', 'text/html') 可以设置响应头
     var sql = 'SELECT * FROM websites';
     query(sql, function (err, result) {
         if (err) {
             console.log('[SELECT ERROR] - ', err.message);
             return;
         }
-        res.end(JSON.stringify(result));
+        res.json(result);
+        // res.end(JSON.stringify(result));
     });
 })
 
@@ -23,7 +25,9 @@ router.post('/add', function (req, res) {
             console.log('[INSERT ERROR] - ', err.message);
             return;
         }
-        res.end('{"result":"ok"}');
+        res.json({
+            "result": "ok"
+        });
     });
 })
 
@@ -36,7 +40,9 @@ router.post('/edit', function (req, res) {
             console.log('[UPDATE ERROR] - ', err.message);
             return;
         }
-        res.end('{"result":"ok"}');
+        res.json({
+            "result": "ok"
+        });
     });
 })
 
@@ -48,7 +54,9 @@ router.post('/del', function (req, res) {
             console.log('[DELETE ERROR] - ', err.message);
             return;
         }
-        res.end('{"result":"ok"}');
+        res.json({
+            "result": "ok"
+        });
     });
 })
 

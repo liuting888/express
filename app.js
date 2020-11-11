@@ -23,7 +23,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 //中间件来设置所有response编码为utf-8
-app.use('*', function (req, res, next) {
+app.all('*', function (req, res, next) {
   res.header("Content-Type", "text/html; charset=utf-8")
   next();
 });
