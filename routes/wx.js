@@ -11,7 +11,8 @@ router.post('/query', function (req, res) {
             console.log('[SELECT ERROR] - ', err.message);
             return;
         }
-        res.json(result);
+        res.send(result);
+        // res.json(result);
         // res.end(JSON.stringify(result));
     });
 })
@@ -25,7 +26,7 @@ router.post('/add', function (req, res) {
             console.log('[INSERT ERROR] - ', err.message);
             return;
         }
-        res.json({
+        res.send({
             "result": "ok"
         });
     });
@@ -40,7 +41,7 @@ router.post('/edit', function (req, res) {
             console.log('[UPDATE ERROR] - ', err.message);
             return;
         }
-        res.json({
+        res.send({
             "result": "ok"
         });
     });
@@ -54,7 +55,7 @@ router.post('/del', function (req, res) {
             console.log('[DELETE ERROR] - ', err.message);
             return;
         }
-        res.json({
+        res.send({
             "result": "ok"
         });
     });
